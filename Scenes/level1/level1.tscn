@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm22a2sccy0f4"]
+
+[ext_resource type="PackedScene" uid="uid://bjo8ku61imxn3" path="res://MainPerson/character_body_2d.tscn" id="1_nhjap"]
+[ext_resource type="PackedScene" uid="uid://c1eq8e6gf5lr8" path="res://Scenes/level1/Tilemap.tscn" id="2_w34jl"]
+
+[node name="level1" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_nhjap")]
+position = Vector2(47, 200)
+
+[node name="Node2D" parent="." instance=ExtResource("2_w34jl")]
+position = Vector2(-2, -3)
