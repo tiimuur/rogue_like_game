@@ -1,19 +1,24 @@
 extends CharacterBody2D
 
-export var speed = 100
-var velocity = Vector2.ZERO
-var direction = Vector2.ZERO
+var speed = 1
 
-func movement():
-	velocity = Vector2.ZERO
-	direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
-	velocity = direction.normalized() * speed
-	velocity = move_and_slide(velocity)
-	
-	if velocity == Vector2.ZERO:
-		$AnimatedSprite2D.play("idle")
-	else:
+func _process(delta):
+	velocity = Vector2()
+	var moving = false
+	if Input.is_action_pressed("up"):
+		velocity.y -= speed
+		moving = true
+	if Input.is_action_pressed("down"):
+		velocity.y += speed
+		moving = true
+	if Input.is_action_pressed("left"):
+		velocity.x -= speed
+		moving = true
+	if Input.is_action_pressed("right"):
+		velocity.x += speed
+		moving = true
+	move_and_collide(velocity)
+	if moving:
 		$AnimatedSprite2D.play("moving")
-	
-func _physics_process(delta):
-	movement()
+	else:
+		$AnimatedSprite2D.play("idle")
