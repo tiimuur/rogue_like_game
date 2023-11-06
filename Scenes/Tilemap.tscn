@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b87arugw3f7ie"]
+[gd_scene load_steps=7 format=3 uid="uid://b87arugw3f7ie"]
 
 [ext_resource type="Texture2D" uid="uid://dt87l088rxtj1" path="res://Tilesets/Tileset.png" id="1_j6pav"]
 [ext_resource type="PackedScene" uid="uid://bjo8ku61imxn3" path="res://MainPerson/character_body_2d.tscn" id="2_gjiri"]
+[ext_resource type="PackedScene" uid="uid://m207xduuov3c" path="res://Mobs/Enemy.tscn" id="3_c5drs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tpavx"]
 
@@ -34,3 +35,6 @@ layer_0/tile_data = PackedInt32Array(0, 0, 1, 1, 0, 1, 65537, 0, 1, 131073, 0, 1
 
 [node name="Player" parent="TileMap" instance=ExtResource("2_gjiri")]
 position = Vector2(80, 85)
+
+[node name="Enemy" parent="TileMap" instance=ExtResource("3_c5drs")]
+position = Vector2(310, 81)
