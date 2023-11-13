@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var speed = 1
+const BULLET = preload("res://Scenes/bullet.tscn")
 
 func _process(delta):
 	velocity = Vector2()
@@ -27,3 +28,13 @@ func _process(delta):
 		$AnimatedSprite2D.play("moving")
 	else:
 		$AnimatedSprite2D.play("idle")
+		
+	if Input.is_action_just_pressed('shoot'):
+		shooting_player()
+		
+		
+func shooting_player():
+	var bullet = BULLET.instantiate()
+	bullet.position = $Marker2D.global_position
+	bullet.set_ta(get_angle_to(get_global_mouse_position()))
+	get_parent().add_child(bullet)
