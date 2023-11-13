@@ -1,8 +1,50 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjo8ku61imxn3"]
+[gd_scene load_steps=20 format=3 uid="uid://bfygqdrdi7c6s"]
 
 [ext_resource type="Texture2D" uid="uid://diwjqhi5wuo7u" path="res://Assets/double_sword_free/double-sword-idle_strip6.png" id="1_hn10i"]
-[ext_resource type="Script" path="res://MainPerson/character_body_2d.gd" id="1_wnhcx"]
 [ext_resource type="Texture2D" uid="uid://ctqr4a1tesfa0" path="res://Assets/double_sword_free/double-sword-walk_strip8.png" id="2_5lqce"]
+
+[sub_resource type="GDScript" id="GDScript_ncs1t"]
+script/source = "extends CharacterBody2D
+
+var speed = 1
+const BULLET = preload(\"res://Scenes/bullet.tscn\")
+
+func _process(delta):
+	velocity = Vector2()
+	var moving = false
+	var cur_speed = speed
+	if Input.is_action_pressed(\"Run\"):	
+		cur_speed *= 2
+	if Input.is_action_pressed(\"up\"):
+		velocity.y -= cur_speed
+		moving = true
+	if Input.is_action_pressed(\"down\"):
+		velocity.y += cur_speed
+		moving = true
+	if Input.is_action_pressed(\"left\"):
+		$AnimatedSprite2D.flip_h = true
+		velocity.x -= cur_speed
+		moving = true
+	if Input.is_action_pressed(\"right\"):
+		$AnimatedSprite2D.flip_h = false
+		velocity.x += cur_speed
+		moving = true
+	move_and_collide(velocity)
+	if moving:
+		$AnimatedSprite2D.play(\"moving\")
+	else:
+		$AnimatedSprite2D.play(\"idle\")
+		
+	if Input.is_action_just_pressed('shoot'):
+		shooting_player()
+		
+		
+func shooting_player():
+	var bullet = BULLET.instantiate()
+	bullet.position = $Marker2D.global_position
+	bullet.set_ta(get_angle_to(get_global_mouse_position()))
+	get_parent().add_child(bullet)
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dicrh"]
 radius = 8.0
@@ -119,7 +161,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_wnhcx")
+script = SubResource("GDScript_ncs1t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dicrh")
