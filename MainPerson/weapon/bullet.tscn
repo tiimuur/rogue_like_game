@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://npk4ef6l3soq"]
+
+[ext_resource type="Texture2D" uid="uid://c2qb2cnopf4ia" path="res://Assets/explosion1.png" id="1_qkosi"]
+[ext_resource type="Script" path="res://MainPerson/weapon/bullet.gd" id="1_tucg2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djtaa"]
+radius = 15.0
+
+[node name="bullet" type="CharacterBody2D"]
+script = ExtResource("1_tucg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_djtaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qkosi")
