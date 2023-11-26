@@ -6,8 +6,11 @@
 [sub_resource type="GDScript" id="GDScript_ncs1t"]
 script/source = "extends CharacterBody2D
 
+
 var speed = 1
 const BULLET = preload(\"res://Scenes/bullet.tscn\")
+var inventory = []
+
 
 func _process(delta):
 	velocity = Vector2()
@@ -37,13 +40,27 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed('shoot'):
 		shooting_player()
-		
-		
+
+
 func shooting_player():
 	var bullet = BULLET.instantiate()
 	bullet.position = $Marker2D.global_position
 	bullet.set_ta(get_angle_to(get_global_mouse_position()))
 	get_parent().add_child(bullet)
+	
+
+class InventoryItem:
+	func _init(newName, newTexture):
+		name = newName
+		texture = newTexture
+	
+	var name
+	var texture
+
+
+func pushInInventory(name, texture):
+	var item = InventoryItem.new(name, texture)
+	inventory.append(item)
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dicrh"]

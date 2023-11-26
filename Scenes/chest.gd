@@ -22,11 +22,13 @@ var is_opened = false
 var chestItems = []
 
 
-func deleteItemByButton(button):
+func deleteItem(button):
 	var newChestItems = []
 	for item in chestItems:
 		if item.button != button:
 			newChestItems.append(item)
+		else:
+			get_parent().get_player().pushInInventory(item.name, item.texture)
 	chestItems = newChestItems
 
 
@@ -55,7 +57,7 @@ func openChest():
 
 func pickItem(button):
 	get_parent().remove_child(button)
-	deleteItemByButton(button)
+	deleteItem(button)
 
 
 
