@@ -11,3 +11,7 @@ func _process(delta):
 
 func get_player():
 	return $Player
+
+
+func get_tilemap():
+	return $TileMap

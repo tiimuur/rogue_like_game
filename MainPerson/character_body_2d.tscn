@@ -46,7 +46,7 @@ func shooting_player():
 	var bullet = BULLET.instantiate()
 	bullet.position = $Marker2D.global_position
 	bullet.set_ta(get_angle_to(get_global_mouse_position()))
-	get_parent().add_child(bullet)
+	get_parent().get_tilemap().add_child(bullet)
 	
 
 class InventoryItem:
