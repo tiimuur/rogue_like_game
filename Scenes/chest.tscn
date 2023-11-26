@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb6e3rgy0i1fq"]
+
+[ext_resource type="Texture2D" uid="uid://ctlrscud304il" path="res://Sprites/1677316897_foni-club-p-sunduk-piksel-art-1.png" id="1_1bynd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt2hn"]
+size = Vector2(26, 24)
+
+[node name="Chest" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(13, 12)
+scale = Vector2(0.015625, 0.0197917)
+texture = ExtResource("1_1bynd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 12)
+shape = SubResource("RectangleShape2D_lt2hn")
