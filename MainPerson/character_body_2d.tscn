@@ -1,42 +1,42 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfygqdrdi7c6s"]
+[gd_scene load_steps=22 format=3 uid="uid://bfygqdrdi7c6s"]
 
+[ext_resource type="Texture2D" uid="uid://dyl1xbpxmx7q0" path="res://Assets/double_sword_free/warrior-portrait.png" id="1_17u8d"]
 [ext_resource type="Texture2D" uid="uid://diwjqhi5wuo7u" path="res://Assets/double_sword_free/double-sword-idle_strip6.png" id="1_hn10i"]
 [ext_resource type="Texture2D" uid="uid://ctqr4a1tesfa0" path="res://Assets/double_sword_free/double-sword-walk_strip8.png" id="2_5lqce"]
 
 [sub_resource type="GDScript" id="GDScript_ncs1t"]
 script/source = "extends CharacterBody2D
 
+var alive = true
+var hp = 200
 var speed = 1
 const BULLET = preload(\"res://Scenes/bullet.tscn\")
 
 func _process(delta):
-	velocity = Vector2()
-	var moving = false
-	var cur_speed = speed
-	if Input.is_action_pressed(\"Run\"):	
-		cur_speed *= 2
-	if Input.is_action_pressed(\"up\"):
-		velocity.y -= cur_speed
-		moving = true
-	if Input.is_action_pressed(\"down\"):
-		velocity.y += cur_speed
-		moving = true
-	if Input.is_action_pressed(\"left\"):
-		$AnimatedSprite2D.flip_h = true
-		velocity.x -= cur_speed
-		moving = true
-	if Input.is_action_pressed(\"right\"):
-		$AnimatedSprite2D.flip_h = false
-		velocity.x += cur_speed
-		moving = true
-	move_and_collide(velocity)
-	if moving:
-		$AnimatedSprite2D.play(\"moving\")
-	else:
-		$AnimatedSprite2D.play(\"idle\")
+	if alive:
+		var moving = false
+		var cur_speed = speed
+		if Input.is_action_pressed(\"Run\"):	
+			cur_speed *= 2
+		velocity = Input.get_vector(\"left\", \"right\", \"up\", \"down\").normalized() * cur_speed
 		
-	if Input.is_action_just_pressed('shoot'):
-		shooting_player()
+		if velocity.x != 0:
+			$AnimatedSprite2D.flip_h = velocity.x < 0 
+		
+		
+		if !velocity.is_zero_approx():
+			moving = true
+			
+		move_and_collide(velocity)
+		
+	
+		if moving:
+			$AnimatedSprite2D.play(\"moving\")
+		else:
+			$AnimatedSprite2D.play(\"idle\")
+			
+		if Input.is_action_just_pressed('shoot'):
+			shooting_player()
 		
 		
 func shooting_player():
@@ -44,10 +44,23 @@ func shooting_player():
 	bullet.position = $Marker2D.global_position
 	bullet.set_ta(get_angle_to(get_global_mouse_position()))
 	get_parent().add_child(bullet)
+
+func getDamaged(damage):
+	hp -= damage
+	if hp <= 0:
+		alive = false
+		$AnimatedSprite2D.play(\"death\")
+	
+
+
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dicrh"]
 radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7x2a"]
+atlas = ExtResource("1_17u8d")
+region = Rect2(0, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10282"]
 atlas = ExtResource("1_hn10i")
@@ -107,6 +120,14 @@ region = Rect2(280, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qpb8g"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7x2a")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_10282")
@@ -170,14 +191,14 @@ shape = SubResource("CapsuleShape2D_dicrh")
 position = Vector2(-1, -4)
 scale = Vector2(0.85625, 0.875)
 sprite_frames = SubResource("SpriteFrames_qpb8g")
-animation = &"moving"
+animation = &"death"
 autoplay = "idle"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.4, 2.4)
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(8, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.4, 2.4)
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

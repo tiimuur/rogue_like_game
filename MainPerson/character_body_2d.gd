@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
+var hp = 200
 var speed = 1
 const BULLET = preload("res://Scenes/bullet.tscn")
+ 
 
 func _process(delta):
 	velocity = Vector2()
 	var moving = false
 	var cur_speed = speed
+	
+	#moving
 	if Input.is_action_pressed("Run"):	
 		cur_speed *= 2
 	if Input.is_action_pressed("up"):
@@ -23,14 +27,20 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = false
 		velocity.x += cur_speed
 		moving = true
+		
 	move_and_collide(velocity)
+	
+	
 	if moving:
 		$AnimatedSprite2D.play("moving")
 	else:
 		$AnimatedSprite2D.play("idle")
 		
+		
+		
 	if Input.is_action_just_pressed('shoot'):
 		shooting_player()
+	
 		
 		
 func shooting_player():

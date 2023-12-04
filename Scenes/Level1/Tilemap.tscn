@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b87arugw3f7ie"]
+[gd_scene load_steps=10 format=3 uid="uid://b87arugw3f7ie"]
 
+[ext_resource type="Script" path="res://Scenes/Level1/Tilemap.gd" id="1_ae7d5"]
 [ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://Tilesets/morgue_tilesheet_0.png" id="1_o6c76"]
 [ext_resource type="PackedScene" uid="uid://bfygqdrdi7c6s" path="res://MainPerson/character_body_2d.tscn" id="2_qaxp8"]
 [ext_resource type="PackedScene" uid="uid://m207xduuov3c" path="res://Mobs/Enemy.tscn" id="3_rgh8f"]
+[ext_resource type="Script" path="res://Scenes/Level1/ProgressBar.gd" id="4_wseip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6gm25"]
 texture = ExtResource("1_o6c76")
@@ -1996,6 +1998,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vqf6p")
 
 [node name="LevelFirst" type="Node2D"]
+script = ExtResource("1_ae7d5")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_pwlid")
@@ -2005,10 +2008,28 @@ layer_0/tile_data = PackedInt32Array(0, 524288, 14, 1, 786432, 13, 2, 786432, 13
 [node name="Player" parent="." instance=ExtResource("2_qaxp8")]
 position = Vector2(65, 237)
 
-[node name="Enemy" parent="." instance=ExtResource("3_rgh8f")]
-position = Vector2(65, 97)
+[node name="Mobs" type="Node" parent="."]
+
+[node name="Enemy" parent="Mobs" instance=ExtResource("3_rgh8f")]
+position = Vector2(229, 375)
+
+[node name="SpawnTimer" type="Timer" parent="Mobs"]
+
+[node name="SpawnPosition" type="Marker2D" parent="Mobs"]
+position = Vector2(915, 224)
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_3ld28")
 format = 2
 layer_0/tile_data = PackedInt32Array(1114130, 65536, 10, 1114131, 65536, 10, 1114132, 65536, 10, 1114133, 65536, 10, 589858, 65536, 10, 589859, 65536, 10, 589860, 65536, 10, 589861, 65536, 10, 589862, 65536, 10, 589863, 65536, 10, 65552, 131072, 18, 131088, 131072, 19, 65553, 196608, 18, 131089, 196608, 19, 65554, 262144, 18, 131090, 262144, 19, 65555, 327680, 18, 131091, 327680, 19, 131092, 393216, 18, 196628, 393216, 19, 131093, 458752, 18, 196629, 458752, 19, 393233, 262144, 20, 458769, 262144, 21, 393234, 327680, 20, 458770, 327680, 21, 393244, 262144, 20, 458780, 262144, 21, 393245, 327680, 20, 458781, 327680, 21, 393269, 393216, 18, 458805, 393216, 19, 393270, 458752, 18, 458806, 458752, 19, 327720, 393216, 18, 393256, 393216, 19, 327721, 458752, 18, 393257, 458752, 19, 1507365, 786432, 18, 1572901, 786432, 19, 1507366, 851968, 18, 1572902, 851968, 19, 1507371, 917504, 18, 1572907, 917504, 19, 1507372, 983040, 18, 1572908, 983040, 19, 1572888, 262144, 20, 1638424, 262144, 21, 1572889, 327680, 20, 1638425, 327680, 21, 1703988, 0, 20, 1769524, 0, 21, 1703989, 65536, 20, 1769525, 65536, 21, 1441843, 917504, 18, 1507379, 917504, 19, 1441844, 983040, 18, 1507380, 983040, 19, 1572865, 131072, 18, 1638401, 131072, 19, 1572866, 196608, 18, 1638402, 196608, 19, 1572869, 262144, 18, 1638405, 262144, 19, 1572870, 327680, 18, 1638406, 327680, 19, 1507331, 0, 8, 1507332, 65536, 8)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 102.0
+offset_bottom = 37.0
+script = ExtResource("4_wseip")
+
+[connection signal="timeout" from="Mobs/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
