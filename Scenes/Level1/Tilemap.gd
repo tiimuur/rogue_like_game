@@ -38,3 +38,6 @@ func get_player():
 
 func get_tilemap():
 	return $TileMap
+
+func get_bullets():
+	return $Bullets

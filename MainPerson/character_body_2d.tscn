@@ -47,10 +47,11 @@ func _process(delta):
 
 
 func shooting_player():
-	var bullet = BULLET.instantiate()
-	bullet.position = $Marker2D.global_position
-	bullet.set_ta(get_angle_to(get_global_mouse_position()))
-	get_parent().get_tilemap().add_child(bullet)
+	if alive:
+		var bullet = BULLET.instantiate()
+		bullet.position = $Marker2D.global_position
+		bullet.set_ta(get_angle_to(get_global_mouse_position()))
+		get_parent().get_bullets().add_child(bullet)
 
 func getDamaged(damage):
 	hp -= damage

@@ -2025,6 +2025,8 @@ position = Vector2(853, 228)
 [node name="Player" parent="." instance=ExtResource("2_qaxp8")]
 position = Vector2(65, 237)
 
+[node name="Bullets" type="Node2D" parent="."]
+
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_3ld28")
 format = 2
