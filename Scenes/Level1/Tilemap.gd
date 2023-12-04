@@ -5,8 +5,10 @@ var canSpawn = true
 var cnt = 0
 
 
+
 func _ready():
 	pass # Replace with function body.
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,3 +30,11 @@ func enemy_spawn():
 
 func _on_spawn_timer_timeout():
 	canSpawn = true
+
+
+func get_player():
+	return $Player
+
+
+func get_tilemap():
+	return $TileMap
