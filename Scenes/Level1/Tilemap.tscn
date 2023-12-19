@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bfygqdrdi7c6s" path="res://MainPerson/character_body_2d.tscn" id="2_qaxp8"]
 [ext_resource type="PackedScene" uid="uid://m207xduuov3c" path="res://Mobs/Enemy.tscn" id="3_rgh8f"]
 [ext_resource type="Script" path="res://Scenes/Level1/ProgressBar.gd" id="4_wseip"]
-[ext_resource type="PackedScene" path="res://Scenes/chest.tscn" id="5_81pqq"]
+[ext_resource type="PackedScene" uid="uid://cb6e3rgy0i1fq" path="res://Scenes/chest.tscn" id="5_81pqq"]
 [ext_resource type="Script" path="res://Scenes/chest.gd" id="6_a0drg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6gm25"]

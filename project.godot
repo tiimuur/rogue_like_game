@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="Rogue_Like_Game"
-run/main_scene="res://Scenes/Level1/Tilemap.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/mode=3
 mouse_cursor/custom_image="res://Assets/kisspng_angle_crosshair_5acc8266d26268_6390231015233521668617.png"
 mouse_cursor/custom_image_hotspot=Vector2(10, 10)
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
