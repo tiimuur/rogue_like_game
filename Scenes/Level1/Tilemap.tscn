@@ -2018,9 +2018,16 @@ show_behind_parent = true
 position = Vector2(229, 375)
 
 [node name="SpawnTimer" type="Timer" parent="Mobs"]
+wait_time = 10.0
 
-[node name="SpawnPosition" type="Marker2D" parent="Mobs"]
+[node name="SpawnPosition0" type="Marker2D" parent="Mobs"]
 position = Vector2(853, 228)
+
+[node name="SpawnPosition1" type="Marker2D" parent="Mobs"]
+position = Vector2(245, 436)
+
+[node name="SpawnPosition2" type="Marker2D" parent="Mobs"]
+position = Vector2(566, 88)
 
 [node name="Player" parent="." instance=ExtResource("2_qaxp8")]
 position = Vector2(65, 237)

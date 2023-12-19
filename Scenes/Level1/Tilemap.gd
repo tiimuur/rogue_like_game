@@ -16,7 +16,7 @@ func _process(delta):
 	if canSpawn:
 		enemy_spawn()
 		canSpawn = false
-		$Mobs/SpawnTimer.start(5)
+		$Mobs/SpawnTimer.start(10)
 	
 	
 	
@@ -24,7 +24,17 @@ func enemy_spawn():
 	var enemy = enemyPreload.instantiate()
 	enemy.name = "Enemy" + str(cnt)
 	cnt += 1
-	enemy.position = $Mobs/SpawnPosition.global_position
+	enemy.position = $Mobs/SpawnPosition0.global_position
+	$Mobs.add_child(enemy)
+	enemy = enemyPreload.instantiate()
+	enemy.name = "Enemy" + str(cnt)
+	cnt += 1
+	enemy.position = $Mobs/SpawnPosition1.global_position
+	$Mobs.add_child(enemy)
+	enemy = enemyPreload.instantiate()
+	enemy.name = "Enemy" + str(cnt)
+	cnt += 1
+	enemy.position = $Mobs/SpawnPosition2.global_position
 	$Mobs.add_child(enemy)
 
 
