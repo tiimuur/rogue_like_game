@@ -16,7 +16,7 @@ func _process(delta):
 	if canSpawn:
 		enemy_spawn()
 		canSpawn = false
-		$Mobs/SpawnTimer.start(10)
+		$Mobs/SpawnTimer.start(35)
 	
 	
 	

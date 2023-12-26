@@ -18,8 +18,9 @@ func _process(delta):
 				player.getDamaged(50)
 				$EnemyTimer.start(1)
 			
-		
-		if chase and player.alive:
+		if not canDamage:
+			$AnimatedSprite2D.play("attack")
+		elif chase and player.alive:
 			velocity = direction * speed
 			$AnimatedSprite2D.play("walk")
 		else:
