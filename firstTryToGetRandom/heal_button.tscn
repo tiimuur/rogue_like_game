@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccooy2mdhbgut"]
+
+[ext_resource type="Script" path="res://firstTryToGetRandom/heal_button.gd" id="1_gk3kj"]
+
+[node name="heal_button" type="Button"]
+text = "Heal (50 rub)"
+script = ExtResource("1_gk3kj")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

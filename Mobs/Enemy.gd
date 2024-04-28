@@ -10,13 +10,14 @@ var canDamage = true
 func _process(delta):
 	if alive:
 		velocity = Vector2()
-		var player = $"../../Player"
+		var player = get_parent().get_player()
 		var direction = (player.position - self.position).normalized()
 		if playerNextTo and player.alive:
 			if canDamage:
 				canDamage = false
 				player.getDamaged(50)
 				$EnemyTimer.start(1)
+				get_parent().update_hp()
 			
 		if not canDamage:
 			$AnimatedSprite2D.play("attack")
@@ -40,7 +41,10 @@ func _on_area_2d_body_exited(body):
 		
 func getDamaged(damage):
 	hp -= damage
+	print(hp)
 	if hp <= 0:
+		if alive:
+			get_parent().update_money(25)
 		alive = false
 		$AnimatedSprite2D.play("death")
 		$CollisionShape2D.set_deferred("disabled", true)
