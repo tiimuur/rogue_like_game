@@ -1,11 +1,14 @@
 extends Node2D
 
-var arrayOfPreloads = [preload("res://firstTryToGetRandom/firstRoom321.tscn"),
- preload("res://firstTryToGetRandom/room1123.tscn")]
+var arrayOfPreloadsUp = [preload("res://firstTryToGetRandom/room_01_up.tscn"),
+ preload("res://firstTryToGetRandom/room_02_up.tscn")]
+var arrayOfPreloadsDown = [preload("res://firstTryToGetRandom/room_01_down.tscn"),
+ preload("res://firstTryToGetRandom/room_02_down.tscn")]
 var funny_coridor = preload("res://firstTryToGetRandom/coridor.tscn")
 var characterPreload = preload("res://MainPerson/character_body_2d.tscn")
 var len_of_room = 20 * 16
-var doors_preload = preload("res://firstTryToGetRandom/Doors/doors_manager.tscn")
+var doors_preload_up = preload("res://firstTryToGetRandom/Doors/door_up/doors_manager.tscn")
+var doors_preload_down = preload("res://firstTryToGetRandom/Doors/door_up/doors_manager.tscn")
 var enemy_preload = preload("res://Mobs/Enemy.tscn")
 var heal_button_preload = preload("res://firstTryToGetRandom/heal_button.tscn")
 
@@ -61,13 +64,13 @@ func _ready():
 		add_child(coridor)
 	
 	for i in range(5):
-		var room = arrayOfPreloads[randi_range(0, 1)].instantiate()
+		var room = arrayOfPreloadsUp[randi_range(0, 1)].instantiate()
 		room.position.x = len_of_room * i
 		room.position.y = -32  - len_of_room
 		add_child(room)
 	
 	for i in range(5):
-		var room = arrayOfPreloads[randi_range(0, 1)].instantiate()
+		var room = arrayOfPreloadsDown[randi_range(0, 1)].instantiate()
 		room.position.x = len_of_room * i
 		room.position.y = 16 * 4
 		add_child(room)
@@ -90,9 +93,15 @@ func _ready():
 	add_child(bulletsNode)
 	
 	for i in range(5):
-		var doors = doors_preload.instantiate()
+		var doors = doors_preload_up.instantiate()
 		doors.position.x = len_of_room * i + len_of_room / 2 - 16
 		doors.position.y = -48
+		add_child(doors)
+		
+	for i in range(5):
+		var doors = doors_preload_up.instantiate()
+		doors.position.x = len_of_room * i + len_of_room / 2 - 16
+		doors.position.y = 64
 		add_child(doors)
 	
 	var info_layer = CanvasLayer.new()
