@@ -127,7 +127,7 @@ func _ready():
 	get_info_layer().add_child(hp_label)
 	
 	var money_label = Label.new()
-	money_label.text = "Money: 0"
+	money_label.text = "Money: " + str(Global.current_money)
 	money_label.position.y = 30
 	get_info_layer().add_child(money_label)
 

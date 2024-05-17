@@ -37,18 +37,21 @@ func _on_quit_to_main_menu_button_pressed():
 
 
 func _on_heal_full_button_pressed():
-	Global.current_money -= 50
-	Global.current_hp = Global.max_hp
-	update_info()
+	if Global.current_money >= 50:
+		Global.current_money -= 50
+		Global.current_hp = Global.max_hp
+		update_info()
 
 
 func _on_increase_max_hp_button_pressed():
-	Global.max_hp += 100
-	Global.current_money -= 100
-	update_info()
+	if (Global.current_money >= 100):
+		Global.max_hp += 100
+		Global.current_money -= 100
+		update_info()
 
 
 func _on_increase_damage_button_pressed():
-	Global.current_money -= 100
-	Global.bullet_dmg += 20
-	update_info()
+	if Global.current_money >= 100:
+		Global.current_money -= 100
+		Global.bullet_dmg += 20
+		update_info()
