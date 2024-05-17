@@ -5,16 +5,15 @@ var arrayOfPreloadsUp = [preload("res://firstTryToGetRandom/room_01_up.tscn"),
 var arrayOfPreloadsDown = [preload("res://firstTryToGetRandom/room_01_down.tscn"),
  preload("res://firstTryToGetRandom/room_02_down.tscn")]
 var funny_coridor = preload("res://firstTryToGetRandom/coridor.tscn")
+var first_coridor_piece = preload("res://firstTryToGetRandom/firstCoridor.tscn")
+var last_coridor_piece = preload("res://firstTryToGetRandom/lastCoridor.tscn")
 var characterPreload = preload("res://MainPerson/character_body_2d.tscn")
 var len_of_room = 20 * 16
 var doors_preload_up = preload("res://firstTryToGetRandom/Doors/door_up/doors_manager.tscn")
 var doors_preload_down = preload("res://firstTryToGetRandom/Doors/door_up/doors_manager.tscn")
 var enemy_preload = preload("res://Mobs/Enemy.tscn")
-var heal_button_preload = preload("res://firstTryToGetRandom/heal_button.tscn")
 
-var maxHP = 200
-var money = 0
-
+var enemy_count = 0
 
 func get_bullets():
 	return $Bullets
@@ -41,24 +40,27 @@ func get_money_label():
 	
 
 func update_hp():
-	get_hp_label().text = "HP: " + str(get_current_hp()) + "/" + str(maxHP)
+	get_hp_label().text = "HP: " + str(get_current_hp()) + "/" + str(Global.max_hp)
 	
 
 func update_money(change):
-	money += change
-	get_money_label().text = "Money: " + str(money)
+	Global.current_money += change
+	enemy_count -= 1
+	get_money_label().text = "Money: " + str(Global.current_money)
 	
-
-func heal():
-	if money >= 50:
-		get_player().hp = maxHP
-		update_hp()
-		update_money(-50)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.current_level += 1
+	
 	for i in range(5):
-		var coridor = funny_coridor.instantiate()
+		var coridor
+		if i == 0:
+			coridor = first_coridor_piece.instantiate()
+		elif i == 4:
+			coridor = last_coridor_piece.instantiate()
+		else:
+			coridor = funny_coridor.instantiate()
 		coridor.position.x = len_of_room * i
 		coridor.position.y = 0
 		add_child(coridor)
@@ -81,11 +83,23 @@ func _ready():
 		enemy.position.y = -200
 		enemy.name = "Enemy" + str(i)
 		add_child(enemy)
+		enemy_count += 1
+		enemy.hp += 20 * (Global.current_level - 1)
+		
+	for i in range(5):
+		var enemy = enemy_preload.instantiate()
+		enemy.position.x = len_of_room * i + len_of_room / 2 - 16
+		enemy.position.y = 300
+		enemy.name = "Enemy" + str(i + 5)
+		add_child(enemy)
+		enemy_count += 1
+		enemy.hp += 20 * (Global.current_level - 1)
 		
 	var character = characterPreload.instantiate()
-	character.position.x = 0
-	character.position.y = 0
+	character.position.x = 50
+	character.position.y = 20
 	character.name = "Player"
+	character.hp = Global.current_hp
 	add_child(character)
 	
 	var bulletsNode = Node2D.new()
@@ -109,19 +123,17 @@ func _ready():
 	add_child(info_layer)
 	
 	var hp_label = Label.new()
-	hp_label.text = "HP: " + str(get_current_hp()) + "/" + str(maxHP)
+	hp_label.text = "HP: " + str(get_current_hp()) + "/" + str(Global.max_hp)
 	get_info_layer().add_child(hp_label)
 	
 	var money_label = Label.new()
 	money_label.text = "Money: 0"
 	money_label.position.y = 30
 	get_info_layer().add_child(money_label)
-	
-	var heal_button = heal_button_preload.instantiate()
-	heal_button.position.y = 60
-	get_info_layer().add_child(heal_button)
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if enemy_count == 0:
+		Global.current_hp = get_player().hp
+		get_tree().change_scene_to_file("res://firstTryToGetRandom/hub.tscn")

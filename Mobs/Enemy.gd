@@ -41,7 +41,6 @@ func _on_area_2d_body_exited(body):
 		
 func getDamaged(damage):
 	hp -= damage
-	print(hp)
 	if hp <= 0:
 		if alive:
 			get_parent().update_money(25)

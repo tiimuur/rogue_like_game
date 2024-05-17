@@ -24,7 +24,7 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		return
 	if "Enemy" in body.name:
-		body.getDamaged(20)
+		body.getDamaged(Global.bullet_dmg)
 	queue_free()
 
 

@@ -59,4 +59,5 @@ offset_bottom = 195.0
 grow_horizontal = 2
 text = "PAUSED
 "
-visible_ratio = -0.166667
+visible_characters = 0
+visible_ratio = 0.0
