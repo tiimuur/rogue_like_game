@@ -1,6 +1,81 @@
-[gd_scene load_steps=2 format=3 uid="uid://2ficgnwva5d4"]
+[gd_scene load_steps=3 format=3 uid="uid://2ficgnwva5d4"]
 
 [ext_resource type="Script" path="res://firstTryToGetRandom/funny_coridor.gd" id="1_ua42f"]
+[ext_resource type="Script" path="res://firstTryToGetRandom/Manager.gd" id="2_uh643"]
 
 [node name="FunnyCoridor" type="Node2D"]
 script = ExtResource("1_ua42f")
+
+[node name="Manager" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_uh643")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -208.0
+offset_right = 336.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -108.0
+offset_right = 204.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Resume
+"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Main menu
+"
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = 40.0
+offset_right = 123.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Pause/Panel/VBoxContainer/ResumeButton" to="Manager" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Panel/VBoxContainer/MainMenuButton" to="Manager" method="_on_main_menu_button_pressed"]
