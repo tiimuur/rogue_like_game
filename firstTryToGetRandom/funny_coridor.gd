@@ -68,40 +68,31 @@ func _ready():
 	var enemy = enemy_preload.instantiate()
 	enemy.position.x = 256
 	enemy.position.y = 32
-	enemy.name = "Enemy" + str(-1)
-	add_child(enemy)
-	enemy_count += 1
-	enemy.add_max_health(20 * Global.current_level)
+	init_enemy(enemy, -1)
 	
 	for i in range(5):
 		var room = arrayOfPreloadsUp[randi_range(0, 1)].instantiate()
 		room.position.x = len_of_room * i
 		room.position.y = -32  - len_of_room
 		add_child(room)
+		
+	for i in range(5):
+		enemy = enemy_preload.instantiate()
+		enemy.position.x = len_of_room * i + len_of_room / 2 - 16 - 64
+		enemy.position.y = -200
+		init_enemy(enemy, i)
 	
 	for i in range(5):
 		var room = arrayOfPreloadsDown[randi_range(0, 1)].instantiate()
 		room.position.x = len_of_room * i
 		room.position.y = 16 * 4
 		add_child(room)
-	
-	for i in range(5):
-		enemy = enemy_preload.instantiate()
-		enemy.position.x = len_of_room * i + len_of_room / 2 - 16 - 64
-		enemy.position.y = -200
-		enemy.name = "Enemy" + str(i)
-		add_child(enemy)
-		enemy_count += 1
-		enemy.add_max_health(20 * Global.current_level)
 		
 	for i in range(5):
 		enemy = enemy_preload.instantiate()
 		enemy.position.x = len_of_room * i + len_of_room / 2 - 16
 		enemy.position.y = 300
-		enemy.name = "Enemy" + str(i + 5)
-		add_child(enemy)
-		enemy_count += 1
-		enemy.add_max_health(20 * Global.current_level)
+		init_enemy(enemy, i)
 		
 	var character = characterPreload.instantiate()
 	character.position.x = 50
@@ -145,3 +136,10 @@ func _process(delta):
 	if enemy_count == 0:
 		Global.current_hp = get_player().hp
 		get_tree().change_scene_to_file("res://firstTryToGetRandom/hub.tscn")
+		
+
+func init_enemy(enemy, id):
+	enemy.name = "Enemy" + str(id)
+	add_child(enemy)
+	enemy_count += 1
+	enemy.add_max_health(20 * Global.current_level)
