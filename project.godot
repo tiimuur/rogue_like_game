@@ -12,7 +12,8 @@ config_version=5
 
 config/name="Rogue_Like_Game"
 run/main_scene="res://Scenes/main_menu.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,9 +23,15 @@ Global="*res://firstTryToGetRandom/Global.gd"
 [display]
 
 window/size/mode=3
-mouse_cursor/custom_image="res://Assets/kisspng_angle_crosshair_5acc8266d26268_6390231015233521668617.png"
+mouse_cursor/custom_image="res://Assets/point and click cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(10, 10)
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
+
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
 
 [input]
 

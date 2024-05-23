@@ -12,6 +12,7 @@ var len_of_room = 20 * 16
 var doors_preload_up = preload("res://firstTryToGetRandom/Doors/door_up/doors_manager.tscn")
 var doors_preload_down = preload("res://firstTryToGetRandom/Doors/door_up/doors_manager.tscn")
 var enemy_preload = preload("res://Mobs/Enemy.tscn")
+var mouse_cursor = load("res://Assets/kisspng_angle_crosshair_5acc8266d26268_6390231015233521668617.png")
 
 var enemy_count = 0
 
@@ -52,6 +53,7 @@ func update_money(change):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.current_level += 1
+	Input.set_custom_mouse_cursor(mouse_cursor)
 	
 	for i in range(5):
 		var coridor
