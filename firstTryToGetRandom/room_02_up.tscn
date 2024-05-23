@@ -855,9 +855,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lw2a0")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eln6p"]
-vertices = PackedVector2Array(158, 339, 165, 350, 147, 350, 154, 339, 158, 299, 154, 302, 146, 286, 70, 113, 70, 278, 42, 278, 42, 90, 186, 280, 146, 280, 187, 279, 119, 93, 197, 90, 218, 120, 230, 114, 210, 264, 230, 224, 222, 257)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(4, 5, 6), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 4, 6, 12, 13), PackedInt32Array(14, 7, 10), PackedInt32Array(14, 10, 15), PackedInt32Array(16, 14, 15, 17), PackedInt32Array(18, 16, 17, 19, 20), PackedInt32Array(18, 20, 13), PackedInt32Array(12, 18, 13)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(144, 336, 144, 304, 136, 288, 136, 272, 200, 256, 208, 128, 120, 104, 80, 120, 80, 288, 32, 288, 32, 80, 200, 80, 240, 109.463, 240, 224, 232, 264, 192, 288, 168, 304, 168, 336, 184, 360, 128, 360)])
+vertices = PackedVector2Array(158, 280, 158, 344, 156, 352, 154, 342, 154, 302, 146, 286, 146, 280, 210, 264, 223, 263, 230, 224, 218, 120, 230, 114, 197, 90, 119, 93, 42, 90, 70, 113, 42, 278, 70, 278)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5, 6), PackedInt32Array(0, 6, 7, 8), PackedInt32Array(9, 8, 7, 10, 11), PackedInt32Array(12, 11, 10, 13), PackedInt32Array(14, 12, 13), PackedInt32Array(14, 13, 15), PackedInt32Array(16, 14, 15, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(144, 304, 136, 288, 136, 272, 200, 256, 208, 128, 120, 104, 80, 120, 80, 288, 32, 288, 32, 80, 200, 80, 240, 109.463, 240, 224, 232, 272, 168, 288, 168, 304, 168, 344, 160, 384, 152, 384, 144, 344)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Room1" type="Node2D"]
