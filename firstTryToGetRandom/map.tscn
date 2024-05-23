@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://2ficgnwva5d4"]
 
-[ext_resource type="Script" path="res://firstTryToGetRandom/funny_coridor.gd" id="1_ua42f"]
-[ext_resource type="Script" path="res://firstTryToGetRandom/Manager.gd" id="2_uh643"]
+[ext_resource type="Script" path="res://firstTryToGetRandom/map_generator.gd" id="1_q6xo0"]
+[ext_resource type="Script" path="res://firstTryToGetRandom/Manager.gd" id="2_3koq1"]
 
 [node name="FunnyCoridor" type="Node2D"]
-script = ExtResource("1_ua42f")
+script = ExtResource("1_q6xo0")
 
 [node name="Manager" type="Node" parent="."]
 process_mode = 3
-script = ExtResource("2_uh643")
+script = ExtResource("2_3koq1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
