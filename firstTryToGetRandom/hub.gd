@@ -1,7 +1,8 @@
 extends Control
 
 func update_info():
-	$InfoLabel.text = "Money: " + str(Global.current_money) + "\nHP: " + str(Global.current_hp) + "/" + str(Global.max_hp)
+	$InfoLabel.text = "Money: " + str(Global.current_money) + "\nHP: " \
+	 + str(Global.current_hp) + "/" + str(Global.max_hp)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,7 @@ func _ready():
 	
 	$ContinueBox.size = Vector2(label_size.x / 2, label_size.y * 2)
 	$ContinueBox.position = Vector2(0.25 * label_size.x, $Panel.size.y - 3 * label_size.y)
-	$ContinueBox/PlayButton.text = "Go to level " + str(Global.current_level + 1)
+	$ContinueBox/PlayButton.text = "Go to level " + str(Global.current_level + 1 + 1)
 	
 	$ShopBox.position = Vector2(0.25 * label_size.x, $InfoLabel.position.y + 300)
 	$ShopBox.size = Vector2(label_size.x / 2, label_size.y * 4)

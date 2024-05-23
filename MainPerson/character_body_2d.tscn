@@ -57,7 +57,7 @@ func shooting_player():
 		get_parent().get_bullets().add_child(bullet)
 		$AnimatedSprite2D.play(\"shooting\")
 		canDamage = false
-		$TimerForShoting.start(1)
+		$TimerForShoting.start(0.2)
 
 func getDamaged(damage):
 	hp -= damage

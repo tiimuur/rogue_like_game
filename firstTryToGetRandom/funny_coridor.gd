@@ -71,7 +71,7 @@ func _ready():
 	enemy.name = "Enemy" + str(-1)
 	add_child(enemy)
 	enemy_count += 1
-	enemy.add_max_health(20 * (Global.current_level - 1))
+	enemy.add_max_health(20 * Global.current_level)
 	
 	for i in range(5):
 		var room = arrayOfPreloadsUp[randi_range(0, 1)].instantiate()
@@ -92,7 +92,7 @@ func _ready():
 		enemy.name = "Enemy" + str(i)
 		add_child(enemy)
 		enemy_count += 1
-		enemy.add_max_health(20 * (Global.current_level - 1))
+		enemy.add_max_health(20 * Global.current_level)
 		
 	for i in range(5):
 		enemy = enemy_preload.instantiate()
@@ -101,7 +101,7 @@ func _ready():
 		enemy.name = "Enemy" + str(i + 5)
 		add_child(enemy)
 		enemy_count += 1
-		enemy.hp += 20 * (Global.current_level - 1)
+		enemy.add_max_health(20 * Global.current_level)
 		
 	var character = characterPreload.instantiate()
 	character.position.x = 50
