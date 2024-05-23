@@ -92,7 +92,7 @@ func _ready():
 		enemy = enemy_preload.instantiate()
 		enemy.position.x = len_of_room * i + len_of_room / 2 - 16
 		enemy.position.y = 300
-		init_enemy(enemy, i)
+		init_enemy(enemy, i + 5)
 		
 	var character = characterPreload.instantiate()
 	character.position.x = 50

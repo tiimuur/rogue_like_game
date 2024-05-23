@@ -184,7 +184,6 @@ height = 52.0
 script = ExtResource("1_i7vmt")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_o7a8o")

@@ -9,11 +9,6 @@ const speed = 1
 var hp = 100
 var canDamage = true
 
-func _ready():
-	pass
-	#$HealthBar.max_value = hp
-	#set_healts_bar()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if alive:
@@ -58,6 +53,7 @@ func getDamaged(damage):
 		alive = false
 		$AnimatedSprite2D.play("death")
 		$CollisionShape2D.set_deferred("disabled", true)
+		$HealthBar.hide()
 
 
 func _on_is_damaged_body_entered(body):
