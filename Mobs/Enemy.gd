@@ -9,6 +9,11 @@ const speed = 1
 var hp = 100
 var canDamage = true
 
+func _ready():
+	pass
+	#$HealthBar.max_value = hp
+	#set_healts_bar()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if alive:
@@ -45,6 +50,8 @@ func _on_area_2d_body_exited(body):
 		
 func getDamaged(damage):
 	hp -= damage
+	set_healts_bar()
+	
 	if hp <= 0:
 		if alive:
 			get_parent().update_money(25)
@@ -66,3 +73,11 @@ func _on_is_damaged_body_exited(body):
 
 func _on_enemy_timer_timeout():
 	canDamage = true;
+	
+func set_healts_bar():
+	$HealthBar.value = hp
+	
+func add_max_health(add_hp):
+	hp += add_hp
+	$HealthBar.max_value = hp
+	set_healts_bar()
