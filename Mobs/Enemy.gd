@@ -5,7 +5,7 @@ extends CharacterBody2D
 var playerNextTo = false
 var alive = true
 var chase = false
-const speed = 0.7
+const speed = 1
 var hp = 100
 var canDamage = true
 

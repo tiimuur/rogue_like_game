@@ -11,9 +11,11 @@ script/source = "extends CharacterBody2D
 var alive = true
 var hp = 200
 
-var speed = 1
+var speed = 0.7
 const BULLET = preload(\"res://Scenes/bullet.tscn\")
 var inventory = []
+
+var canDamage = true
 
 
 func _process(delta):
@@ -48,12 +50,14 @@ func _process(delta):
 
 
 func shooting_player():
-	if alive:
+	if alive and canDamage:
 		var bullet = BULLET.instantiate()
 		bullet.position = $Marker2D.global_position
 		bullet.set_ta(get_angle_to(get_global_mouse_position()))
 		get_parent().get_bullets().add_child(bullet)
 		$AnimatedSprite2D.play(\"shooting\")
+		canDamage = false
+		$TimerForShoting.start(1)
 
 func getDamaged(damage):
 	hp -= damage
@@ -86,6 +90,10 @@ func get_tilemap():
 
 func get_bullets():
 	return $Bullets
+
+
+func _on_timer_for_shoting_timeout():
+	canDamage = true
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dicrh"]
@@ -270,3 +278,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="TimerForShoting" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerForShoting" to="." method="_on_timer_for_shoting_timeout"]
