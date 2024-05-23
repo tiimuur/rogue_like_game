@@ -882,9 +882,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4sij4")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1bjp5"]
-vertices = PackedVector2Array(180, 26, 310, 26, 310, 38, 180, 38, 140, 38, 26, 38, 26, 26, 140, 26, 164, 10, 164, 54, 156, 54, 156, 10)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 0, 3, 9, 10, 4, 7, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(16, 16, 136, 16, 152, 0, 168, 0, 184, 16, 320, 16, 320, 48, 184, 48, 168, 64, 152, 64, 136, 48, 16, 48)])
+vertices = PackedVector2Array(158, 34, 374, 34, 374, 38, 158, 38, 158, 110, 154, 110, 154, 38, 154, 34, 26, 38, 26, 34, 158, -54, 154, -54)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(0, 3, 6, 7), PackedInt32Array(6, 8, 9, 7), PackedInt32Array(10, 0, 7, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(16, 24, 144, 24, 144, -64, 168, -64, 168, 24, 384, 24, 384, 48, 168, 48, 168, 120, 144, 120, 144, 48, 16, 48)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Coridor" type="Node2D"]

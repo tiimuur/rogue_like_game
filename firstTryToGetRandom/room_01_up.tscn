@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfa38fiui8th3"]
+[gd_scene load_steps=6 format=3 uid="uid://cfa38fiui8th3"]
 
 [ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://Tilesets/morgue_tilesheet_0.png" id="1_ponly"]
 
@@ -851,10 +851,16 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lw2a0")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0l5gi"]
-vertices = PackedVector2Array(106, 58, 249, 58, 229, 62, 205, 74, 106, 60, 74, 252, 254, 238, 263, 242, 254, 252, 166, 294, 154, 294, 254, 294, 166, 334, 154, 334, 52, 230, 26, 230, 26, 82, 84, 82, 215, 176, 270, 194, 254, 202, 270, 191, 85, 294, 74, 277)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10), PackedInt32Array(8, 11, 9), PackedInt32Array(9, 12, 13, 10), PackedInt32Array(14, 15, 16, 17, 18), PackedInt32Array(4, 3, 18, 17), PackedInt32Array(19, 20, 5, 14, 18, 21), PackedInt32Array(5, 20, 6), PackedInt32Array(5, 10, 22, 23)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(144, 344, 144, 304, 80, 304, 64, 280, 64, 256, 48, 240, 16, 240, 16, 72, 80, 72, 96, 56, 96, 48, 264, 48, 272, 64, 232, 72, 216, 80, 224, 168, 280, 184, 280, 200, 264, 208, 264, 232, 280, 240, 264, 256, 264, 288, 280, 296, 264, 304, 176, 304, 176, 344)])
+vertices = PackedVector2Array(106, 58, 249, 58, 229, 62, 205, 74, 106, 60, 158, 267, 158, 344, 156, 350, 154, 342, 154, 259, 254, 238, 263, 242, 254, 252, 254, 291, 50, 230, 26, 230, 26, 82, 84, 82, 215, 176, 82, 241, 254, 202, 270, 191, 270, 194, 90, 276, 82, 268)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(0, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(10, 11, 12, 5, 9), PackedInt32Array(12, 13, 5), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(18, 9, 19, 14, 17, 4, 3), PackedInt32Array(20, 10, 9, 18), PackedInt32Array(18, 21, 22, 20), PackedInt32Array(19, 9, 23, 24)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(144, 344, 144, 272, 88, 288, 72, 272, 72, 248, 48, 240, 16, 240, 16, 72, 80, 72, 96, 56, 96, 48, 264, 48, 272, 64, 232, 72, 216, 80, 224, 168, 280, 184, 280, 200, 264, 208, 264, 232, 280, 240, 264, 256, 264, 288, 280, 296, 264, 304, 168, 280, 168, 344, 160, 376, 152, 376)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="Curve2D" id="Curve2D_i2wl4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 144, 232, 0, 0, 0, 0, 56, 208, 0, 0, 0, 0, 48, 144, 0, 0, 0, 0, 80, 96, 0, 0, 0, 0, 136, 72, 0, 0, 0, 0, 200, 88, 0, 0, 0, 0, 208, 136, 0, 0, 0, 0, 216, 184, 0, 0, 0, 0, 216, 224, 0, 0, 0, 0, 144, 232)
+}
+point_count = 10
 
 [node name="FirstRoom" type="Node2D"]
 
@@ -867,3 +873,6 @@ layer_1/tile_data = PackedInt32Array(65542, 131072, 18, 131078, 131072, 19, 6554
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="TileMap"]
 navigation_polygon = SubResource("NavigationPolygon_0l5gi")
+
+[node name="Path2D" type="Path2D" parent="TileMap"]
+curve = SubResource("Curve2D_i2wl4")

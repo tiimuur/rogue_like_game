@@ -794,7 +794,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4sij4")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qeqks"]
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 8, 128, 8, 144, 0, 176, 0, 200, 8, 320, 8, 320, 56, 184, 56, 176, 64, 144, 64, 136, 56, 0, 56)])
+vertices = PackedVector2Array(154, 35, -22, 34, 154, 34, 158, 34, 342, 34, 341, 35, 158, 35, 158, 126, 154, 126, 158, -62, 154, -62)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(6, 7, 8, 0), PackedInt32Array(3, 6, 0, 2), PackedInt32Array(9, 3, 2, 10)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-32, 24, 144, 24, 144, -72, 168, -72, 168, 24, 352, 24, 351, 45, 168, 45, 168, 136, 144, 136, 144, 45, -32, 44)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Coridor" type="Node2D"]
