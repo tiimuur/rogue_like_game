@@ -64,6 +64,14 @@ func _ready():
 		coridor.position.x = len_of_room * i
 		coridor.position.y = 0
 		add_child(coridor)
+		
+	var enemy = enemy_preload.instantiate()
+	enemy.position.x = 256
+	enemy.position.y = 32
+	enemy.name = "Enemy" + str(-1)
+	add_child(enemy)
+	enemy_count += 1
+	enemy.hp += 20 * (Global.current_level - 1)
 	
 	for i in range(5):
 		var room = arrayOfPreloadsUp[randi_range(0, 1)].instantiate()
@@ -78,8 +86,8 @@ func _ready():
 		add_child(room)
 	
 	for i in range(5):
-		var enemy = enemy_preload.instantiate()
-		enemy.position.x = len_of_room * i + len_of_room / 2 - 16
+		enemy = enemy_preload.instantiate()
+		enemy.position.x = len_of_room * i + len_of_room / 2 - 16 - 64
 		enemy.position.y = -200
 		enemy.name = "Enemy" + str(i)
 		add_child(enemy)
@@ -87,7 +95,7 @@ func _ready():
 		enemy.hp += 20 * (Global.current_level - 1)
 		
 	for i in range(5):
-		var enemy = enemy_preload.instantiate()
+		enemy = enemy_preload.instantiate()
 		enemy.position.x = len_of_room * i + len_of_room / 2 - 16
 		enemy.position.y = 300
 		enemy.name = "Enemy" + str(i + 5)

@@ -6,6 +6,8 @@
 [sub_resource type="GDScript" id="GDScript_ncs1t"]
 script/source = "extends CharacterBody2D
 
+@onready var nav : NavigationAgent2D = $NavigationAgent2D
+
 var alive = true
 var hp = 200
 
@@ -74,6 +76,16 @@ class InventoryItem:
 func pushInInventory(name, texture):
 	var item = InventoryItem.new(name, texture)
 	inventory.append(item)
+	
+func get_player():
+	return $Player
+
+
+func get_tilemap():
+	return $TileMap
+
+func get_bullets():
+	return $Bullets
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dicrh"]
@@ -256,3 +268,5 @@ zoom = Vector2(2.4, 2.4)
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
