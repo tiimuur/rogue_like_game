@@ -12,7 +12,7 @@ var curent_max_clip = 5
 var bullet_clip = curent_max_clip
 var reloading = false
 
-var bullet_preload = preload("res://scenes/player/bullet.tscn")
+const bullet_preload = preload("res://scenes/player/bullet.tscn")
 
 
 func is_alive():

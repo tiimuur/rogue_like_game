@@ -22,7 +22,6 @@ func init_enemies():
 
 
 func start_battle():
-	print("battle started")
 	battle_now = true
 	fill_holes(false)
 	for enemy in enemies:
@@ -30,7 +29,6 @@ func start_battle():
 
 
 func end_battle():
-	print("battle ended")
 	battle_now = false
 	delete_dynamic_walls()
 

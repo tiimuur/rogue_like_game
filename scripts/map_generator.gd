@@ -11,7 +11,8 @@ const battle_room_preload = [
 	preload("res://scenes/rooms/battle_room2.tscn"), 
 	preload("res://scenes/rooms/battle_room3.tscn")
 ]
-const start_room_preload = [preload("res://scenes/rooms/test_room.tscn")]
+const start_room_preload = preload("res://scenes/rooms/start_room.tscn")
+const end_room_preload = preload("res://scenes/rooms/end_room.tscn")
 const enemy_preload = preload("res://scenes/Enemy.tscn")
 const vertical_coridor_preload = preload("res://scenes/rooms/vertical_coridor.tscn")
 const horizontal_coridor_preload = preload("res://scenes/rooms/horizontal_coridor.tscn")
@@ -106,6 +107,9 @@ func _ready():
 		graph[edges.back()[0]][edges.back()[1]] = null
 		graph[edges.back()[1]][edges.back()[0]] = null
 	
+	graph[8][9] = null
+	graph[8][11] = null
+	
 	for i in range(9):
 		if dsu_find(i) == dsu_find(0):
 			rooms.append(i)
@@ -113,7 +117,13 @@ func _ready():
 	for room in rooms:
 		var y_coord = room / 3
 		var x_coord = room % 3
-		var new_room = battle_room_preload.pick_random().instantiate()
+		var new_room
+		if room == 0:
+			new_room = start_room_preload.instantiate()
+		elif room == 8:
+			new_room = end_room_preload.instantiate()
+		else:
+			new_room = battle_room_preload.pick_random().instantiate()
 		new_room.set_position(Vector2(
 			x_coord * Global.sum_size, 
 			y_coord * Global.sum_size
