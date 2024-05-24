@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mal0kpkepnx"
-path="res://.godot/imported/Left.png-af9b60308992eb10ae8e7a3fadf882f0.ctex"
+path="res://.godot/imported/Left.png-996d847229240480c0fa151fe7f00ea8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mobs/Attack/Left.png"
-dest_files=["res://.godot/imported/Left.png-af9b60308992eb10ae8e7a3fadf882f0.ctex"]
+source_file="res://assets/Mobs/Attack/Left.png"
+dest_files=["res://.godot/imported/Left.png-996d847229240480c0fa151fe7f00ea8.ctex"]
 
 [params]
 
