@@ -163,7 +163,7 @@ func _ready():
 	add_child(bullets_node)
 	
 	var info_layer = CanvasLayer.new()
-	info_layer.name = "Info"
+	info_layer.set_name("Info")
 	add_child(info_layer)
 	
 	var hp_label = Label.new()

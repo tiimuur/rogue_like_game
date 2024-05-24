@@ -28,7 +28,7 @@ func set_reload(value):
 
 
 func shooting_player():
-	if alive and can_damage and !reloading:
+	if alive and can_damage and not reloading:
 		var bullet = bullet_preload.instantiate()
 		bullet.set_position($Marker2D.get_global_position())
 		bullet.set_ta(get_angle_to(get_global_mouse_position()))
@@ -88,7 +88,7 @@ func _process(delta):
 		$AnimatedSprite2D.set_flip_h(velocity.x < 0) 
 	
 	
-	if !velocity.is_zero_approx():
+	if not velocity.is_zero_approx():
 		moving = true
 		
 	move_and_collide(velocity)
