@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kyksutveqxgm"
-path="res://.godot/imported/point and click cursor.png-ce4930d5d655d1cc0635d0ca5502aede.ctex"
+uid="uid://dpik6mh45rodf"
+path="res://.godot/imported/Right.png-4349d50897fe2145062f3e7bee3b464b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/point and click cursor.png"
-dest_files=["res://.godot/imported/point and click cursor.png-ce4930d5d655d1cc0635d0ca5502aede.ctex"]
+source_file="res://assets/Mobs/Attack/Right.png"
+dest_files=["res://.godot/imported/Right.png-4349d50897fe2145062f3e7bee3b464b.ctex"]
 
 [params]
 

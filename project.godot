@@ -11,19 +11,18 @@ config_version=5
 [application]
 
 config/name="Rogue_Like_Game"
-run/main_scene="res://Scenes/main_menu.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
-config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://firstTryToGetRandom/Global.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 
 window/size/mode=3
-mouse_cursor/custom_image="res://Assets/point and click cursor.png"
+mouse_cursor/custom_image="res://assets/point and click cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(10, 10)
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 
