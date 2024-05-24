@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhlwnv6wlma47"]
 
 [ext_resource type="Script" path="res://scripts/rooms/battle_room.gd" id="1_g1hs3"]
-[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://assets/morgue_tilesheet_0.png" id="2_3mhnv"]
-[ext_resource type="PackedScene" uid="uid://m207xduuov3c" path="res://scenes/enemy.tscn" id="3_8kdo7"]
+[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://Assets/morgue_tilesheet_0.png" id="2_3mhnv"]
+[ext_resource type="PackedScene" uid="uid://m207xduuov3c" path="res://Scenes/enemy.tscn" id="3_8kdo7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw2a0"]
 texture = ExtResource("2_3mhnv")
