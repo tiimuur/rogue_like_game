@@ -13,7 +13,6 @@ func _process(delta):
 
 
 func _on_reload_bar_value_changed(value):
-	print(value)
 	if value == 30:
 		$ReloadBar.hide()
 		$"..".reloading = false

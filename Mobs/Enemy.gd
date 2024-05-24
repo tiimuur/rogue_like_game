@@ -49,7 +49,7 @@ func getDamaged(damage):
 	
 	if hp <= 0:
 		if alive:
-			get_parent().update_money(25)
+			get_parent().remove_enemy(25, name)
 		alive = false
 		$AnimatedSprite2D.play("death")
 		$CollisionShape2D.set_deferred("disabled", true)
