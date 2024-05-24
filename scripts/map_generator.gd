@@ -1,22 +1,22 @@
 extends Node2D
 
 
-var enemy_count = 0
 var dsu_parent = []
 var room_coord = {}
 var enemies = {}
 var graph = []
 
-var battle_room_preload = [preload("res://scenes/rooms/battle_room1.tscn"), 
+const battle_room_preload = [
+	preload("res://scenes/rooms/battle_room1.tscn"), 
 	preload("res://scenes/rooms/battle_room2.tscn"), 
 	preload("res://scenes/rooms/battle_room3.tscn")
 ]
-var start_room_preload = [preload("res://scenes/rooms/test_room.tscn")]
-var enemy_preload = preload("res://scenes/Enemy.tscn")
-var vertical_coridor_preload = preload("res://scenes/rooms/vertical_coridor.tscn")
-var horizontal_coridor_preload = preload("res://scenes/rooms/horizontal_coridor.tscn")
-var player_preload = preload("res://scenes/player/player.tscn")
-var greeting_preload = preload("res://scenes/control/greeting.tscn")
+const start_room_preload = [preload("res://scenes/rooms/test_room.tscn")]
+const enemy_preload = preload("res://scenes/Enemy.tscn")
+const vertical_coridor_preload = preload("res://scenes/rooms/vertical_coridor.tscn")
+const horizontal_coridor_preload = preload("res://scenes/rooms/horizontal_coridor.tscn")
+const player_preload = preload("res://scenes/player/player.tscn")
+const greeting_preload = preload("res://scenes/control/greeting.tscn")
 
 
 func dsu_init(size):

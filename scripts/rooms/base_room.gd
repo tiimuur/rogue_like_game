@@ -6,9 +6,9 @@ var id
 var walls = [null, null]
 var player_here = false
 
-var vertical_wall_preload = preload("res://scenes/rooms/vertical_wall.tscn")
-var horizontal_wall_preload = preload("res://scenes/rooms/horizontal_wall.tscn")
-var down_fix_preload = preload("res://scenes/rooms/down_fix.tscn")
+const vertical_wall_preload = preload("res://scenes/rooms/vertical_wall.tscn")
+const horizontal_wall_preload = preload("res://scenes/rooms/horizontal_wall.tscn")
+const down_fix_preload = preload("res://scenes/rooms/down_fix.tscn")
 
 
 func get_player():
