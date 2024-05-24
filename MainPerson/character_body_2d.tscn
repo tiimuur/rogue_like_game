@@ -312,6 +312,7 @@ script = ExtResource("3_n263t")
 
 [node name="ReloadBar" type="ProgressBar" parent="Control"]
 modulate = Color(1, 0.74902, 0, 1)
+layout_mode = 0
 offset_left = -12.0
 offset_top = -23.0
 offset_right = 12.0

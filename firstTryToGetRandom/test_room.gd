@@ -93,5 +93,7 @@ func end_battle():
 
 
 func _on_player_detector_body_entered(body):
-	if body.name == "Player" and type == "battle" and edges_node == null and get_parent().has_enemy("Enemy" + str(id) + "0"):
-		start_battle()
+	if body.name == "Player":
+		if type == "battle" and edges_node == null and get_parent().has_enemy("Enemy" + str(id) + "0"):
+			start_battle()
+			

@@ -11,6 +11,7 @@ var enemy_preload = preload("res://Mobs/Enemy.tscn")
 var vert_coridor_preload = preload("res://firstTryToGetRandom/vertical_coridor.tscn")
 var hor_coridor_preload = preload("res://firstTryToGetRandom/horizontal_coridor.tscn")
 var player_preload = preload("res://MainPerson/character_body_2d.tscn")
+var greeting_preload = preload("res://firstTryToGetRandom/greeting.tscn")
 
 
 func dsu_init(size):
@@ -188,6 +189,9 @@ func _ready():
 	money_label.text = "Money: " + str(Global.current_money)
 	money_label.position.y = 30
 	get_info_layer().add_child(money_label)
+	
+	var greeting = greeting_preload.instantiate()
+	get_info_layer().add_child(greeting)
 
 
 func _process(delta):
