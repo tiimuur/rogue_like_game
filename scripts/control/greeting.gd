@@ -19,4 +19,5 @@ func _process(delta):
 		while visible_ratio > 0.0:
 			await get_tree().create_timer(0.05).timeout
 			visible_ratio -= 0.1
-		hide()
+		get_parent().get_parent().get_parent().set_greeting_rendered()
+		get_parent().remove_child(self)

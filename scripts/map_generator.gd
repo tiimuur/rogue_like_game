@@ -5,6 +5,8 @@ var dsu_parent = []
 var room_coord = {}
 var enemies = {}
 var graph = []
+var render_greeting = true
+var pause_menu
 
 const battle_room_preload = [
 	preload("res://scenes/rooms/battle_room1.tscn"), 
@@ -18,6 +20,7 @@ const vertical_coridor_preload = preload("res://scenes/rooms/vertical_coridor.ts
 const horizontal_coridor_preload = preload("res://scenes/rooms/horizontal_coridor.tscn")
 const player_preload = preload("res://scenes/player/player.tscn")
 const greeting_preload = preload("res://scenes/control/greeting.tscn")
+const pause_menu_preload = preload("res://scenes/control/pause_manager.tscn")
 
 
 func dsu_init(size):
@@ -37,6 +40,25 @@ func dsu_unite(a, b):
 	a = dsu_find(a)
 	b = dsu_find(b)
 	dsu_parent[a] = b
+
+
+func pause_game():
+	get_tree().set_pause(true)
+	pause_menu.show()
+
+
+func resume_game():
+	pause_menu.hide()
+	get_tree().set_pause(false)
+
+
+func quit_game():
+	get_tree().set_pause(false)
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func set_greeting_rendered():
+	render_greeting = false
 
 
 func get_bullets():
@@ -177,3 +199,14 @@ func _ready():
 	
 	var greeting = greeting_preload.instantiate()
 	get_info_layer().add_child(greeting)
+	
+	pause_menu = pause_menu_preload.instantiate()
+	get_info_layer().add_child(pause_menu)
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("Escape") and not render_greeting:
+		if get_tree().is_paused():
+			resume_game()
+		else:
+			pause_game()

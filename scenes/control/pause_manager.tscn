@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6hi3v6pl7phr"]
+
+[ext_resource type="Script" path="res://scripts/control/pause_manager.gd" id="1_tg4my"]
+
+[node name="Control" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_tg4my")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

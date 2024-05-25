@@ -877,7 +877,6 @@ layer_2/tile_data = PackedInt32Array(393244, 131072, 20, 458780, 131072, 21, 196
 navigation_polygon = SubResource("NavigationPolygon_psm7m")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(240, 240)

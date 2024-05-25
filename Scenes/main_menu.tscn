@@ -2,24 +2,26 @@
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_35hc6"]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
 script = ExtResource("1_35hc6")
 
-[node name="PlayButton" type="Button" parent="."]
-offset_left = 507.0
-offset_top = 290.0
-offset_right = 1391.0
-offset_bottom = 471.0
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Play"
 
-[node name="QuitButton" type="Button" parent="."]
-offset_left = 508.0
-offset_top = 585.0
-offset_right = 1389.0
-offset_bottom = 766.0
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "Quit"
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="VBoxContainer" method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer" method="_on_quit_button_pressed"]

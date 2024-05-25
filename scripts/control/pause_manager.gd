@@ -1,28 +1,22 @@
-extends Node
+extends VBoxContainer
 
 
-@onready var pause_menu =  $"../CanvasLayer/Pause"
-
-var game_paused = false
-
-
-func _process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
-		game_paused = !game_paused
-		
-	if game_paused:
-		get_tree().set_pause(true)
-		pause_menu.show()
-	else:
-		get_tree().set_pause(false)
-		pause_menu.hide()
-
+func _ready():
+	size = Vector2(
+			get_viewport().get_size().x / 2,
+			get_viewport().get_size().y / 2
+		)
+	position = Vector2(
+		get_viewport().get_size().x * 0.25,
+		get_viewport().get_size().y * 0.25
+	)
+	set_process_mode(PROCESS_MODE_ALWAYS)
+	hide()
 
 
 func _on_resume_button_pressed():
-	game_paused = !game_paused
+	get_parent().get_parent().resume_game()
 
 
-func _on_main_menu_button_pressed():
-	get_tree().set_pause(false)
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+func _on_quit_button_pressed():
+	get_parent().get_parent().quit_game()

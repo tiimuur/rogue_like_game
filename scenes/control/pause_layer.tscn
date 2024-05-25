@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://tqfgqlx3i846"]
+[gd_scene load_steps=2 format=3 uid="uid://bms687cqrmta6"]
+
+[ext_resource type="Script" path="res://scripts/control/pause_manager.gd" id="1_v5e2l"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v5e2l")
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1
@@ -61,3 +64,6 @@ text = "PAUSED
 "
 visible_characters = 0
 visible_ratio = 0.0
+
+[connection signal="pressed" from="Control/Panel/VBoxContainer/ResumeButton" to="Control" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/QuitToMainMenuButton" to="Control" method="_on_quit_to_main_menu_button_pressed"]

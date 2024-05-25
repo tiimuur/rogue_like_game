@@ -1,22 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://2ficgnwva5d4"]
+[gd_scene load_steps=2 format=3 uid="uid://2ficgnwva5d4"]
 
 [ext_resource type="Script" path="res://scripts/map_generator.gd" id="1_q6xo0"]
-[ext_resource type="Script" path="res://scenes/Manager.gd" id="2_a6euf"]
-[ext_resource type="PackedScene" uid="uid://3v366qjjer0p" path="res://scenes/control/pause_menu.tscn" id="3_6n32j"]
 
 [node name="FunnyCoridor" type="Node2D"]
 script = ExtResource("1_q6xo0")
 
 [node name="Manager" type="Node" parent="."]
 process_mode = 3
-script = ExtResource("2_a6euf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_6n32j")]
-process_mode = 2
-
-[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Resume" to="Manager" method="_on_resume_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Quit" to="Manager" method="_on_quit_pressed"]
-
-[editable path="CanvasLayer/PauseMenu"]
