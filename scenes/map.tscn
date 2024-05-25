@@ -1,81 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://2ficgnwva5d4"]
+[gd_scene load_steps=4 format=3 uid="uid://2ficgnwva5d4"]
 
 [ext_resource type="Script" path="res://scripts/map_generator.gd" id="1_q6xo0"]
-[ext_resource type="Script" path="res://scripts/control/pause_manager.gd" id="2_3koq1"]
+[ext_resource type="Script" path="res://scenes/Manager.gd" id="2_a6euf"]
+[ext_resource type="PackedScene" uid="uid://3v366qjjer0p" path="res://scenes/control/pause_menu.tscn" id="3_6n32j"]
 
 [node name="FunnyCoridor" type="Node2D"]
 script = ExtResource("1_q6xo0")
 
 [node name="Manager" type="Node" parent="."]
 process_mode = 3
-script = ExtResource("2_3koq1")
+script = ExtResource("2_a6euf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Pause" type="Control" parent="CanvasLayer"]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_6n32j")]
 process_mode = 2
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Pause"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -336.0
-offset_top = -208.0
-offset_right = 336.0
-offset_bottom = 208.0
-grow_horizontal = 2
-grow_vertical = 2
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Resume" to="Manager" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Quit" to="Manager" method="_on_quit_pressed"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = -108.0
-offset_right = 204.0
-offset_bottom = 108.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="ResumeButton" type="Button" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Resume
-"
-
-[node name="MainMenuButton" type="Button" parent="CanvasLayer/Pause/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Main menu
-"
-
-[node name="Label" type="Label" parent="CanvasLayer/Pause/Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -123.0
-offset_top = 40.0
-offset_right = 123.0
-offset_bottom = 101.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
-text = "PAUSED"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="pressed" from="CanvasLayer/Pause/Panel/VBoxContainer/ResumeButton" to="Manager" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Pause/Panel/VBoxContainer/MainMenuButton" to="Manager" method="_on_main_menu_button_pressed"]
+[editable path="CanvasLayer/PauseMenu"]
