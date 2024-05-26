@@ -5,8 +5,8 @@ const TIME_FOR_STAMINA = 0.1
 
 
 func _ready():
-	$StaminaBar.set_max(100)
-	$StaminaBar.set_value(100)
+	$StaminaBar.set_max(Global.max_stamina)
+	$StaminaBar.set_value(Global.max_stamina)
 
 
 func _on_stamina_bar_value_changed(value):

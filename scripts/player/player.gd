@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @onready var nav = $NavigationAgent2D
-@onready var stamina_decriment_timer = $Stamina/staminaDecrimentTimer
 @onready var stamina_bar = $Stamina/StaminaBar
 
 const TIME_FOR_SHOOTING = 1

@@ -63,3 +63,10 @@ func _on_decrease_reload_time_button_pressed():
 		Global.current_money -= 100
 		Global.time_between_reload_anim -= 0.01
 		update_info()
+
+
+func _on_increase_stamina_button_pressed():
+	if Global.current_money >= 150:
+		Global.current_money -= 150
+		Global.max_stamina += 100
+		update_info()
