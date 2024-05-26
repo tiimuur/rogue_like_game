@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var nav = $NavigationAgent2D
+@onready var stamina_decriment_timer = $Stamina/staminaDecrimentTimer
+@onready var stamina_bar = $Stamina/StaminaBar
 
 const TIME_FOR_SHOOTING = 1
 
@@ -79,18 +81,23 @@ func _on_timer_for_shoting_timeout():
 
 
 func _process(delta):
-	if !alive:
+	if not alive:
 		return
 
 	var moving = false
 	var cur_speed = speed
-	if Input.is_action_pressed("Run"):	
+	
+	if Input.is_action_pressed("Run") and stamina_bar.get_value() > 0:
+		stamina_bar.set_value(stamina_bar.get_value() - 1)
 		cur_speed *= 1.5
+
 	velocity = Input.get_vector("left", "right", "up", "down").normalized() * cur_speed
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.set_flip_h(velocity.x < 0) 
 	
+	if velocity == Vector2():
+		stamina_bar.set_value(stamina_bar.get_value() + 1)
 	
 	if not velocity.is_zero_approx():
 		moving = true
