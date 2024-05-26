@@ -51,17 +51,27 @@ horizontal_alignment = 1
 [node name="HealFullButton" type="Button" parent="ShopBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Heal full HP (50)"
+text = "Heal 50 HP (50₽)"
 
 [node name="IncreaseMaxHPButton" type="Button" parent="ShopBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Increase max HP (100)"
+text = "Increase max HP (100₽)"
 
 [node name="IncreaseDamageButton" type="Button" parent="ShopBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Increase bullet damage (100)"
+text = "Increase bullet damage (100₽)"
+
+[node name="IncreaseMagazineButton" type="Button" parent="ShopBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Increase ammo size (100₽)"
+
+[node name="DecreaseReloadTimeButton" type="Button" parent="ShopBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Decrease reload time (100₽)"
 
 [node name="ContinueBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -91,5 +101,7 @@ text = "Quit to main menu
 [connection signal="pressed" from="ShopBox/HealFullButton" to="." method="_on_heal_full_button_pressed"]
 [connection signal="pressed" from="ShopBox/IncreaseMaxHPButton" to="." method="_on_increase_max_hp_button_pressed"]
 [connection signal="pressed" from="ShopBox/IncreaseDamageButton" to="." method="_on_increase_damage_button_pressed"]
+[connection signal="pressed" from="ShopBox/IncreaseMagazineButton" to="." method="_on_increase_magazine_button_pressed"]
+[connection signal="pressed" from="ShopBox/DecreaseReloadTimeButton" to="." method="_on_decrease_reload_time_button_pressed"]
 [connection signal="pressed" from="ContinueBox/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="ContinueBox/QuitToMainMenuButton" to="." method="_on_quit_to_main_menu_button_pressed"]

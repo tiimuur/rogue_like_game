@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://donr8n21f11c5"]
+[gd_scene load_steps=8 format=3 uid="uid://donr8n21f11c5"]
 
 [ext_resource type="Script" path="res://scripts/rooms/battle_room.gd" id="1_lvmi6"]
-[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://assets/morgue_tilesheet_0.png" id="1_ndd8o"]
+[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://assets/tileset.png" id="1_ndd8o"]
+[ext_resource type="PackedScene" uid="uid://m207xduuov3c" path="res://scenes/enemy.tscn" id="3_7eoia"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw2a0"]
 texture = ExtResource("1_ndd8o")
@@ -879,6 +880,9 @@ navigation_polygon = SubResource("NavigationPolygon_iky75")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(240, 240)
 shape = SubResource("RectangleShape2D_etjop")
+
+[node name="Enemy" parent="." instance=ExtResource("3_7eoia")]
+position = Vector2(239, 241)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

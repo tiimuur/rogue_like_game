@@ -15,7 +15,7 @@ const battle_room_preload = [
 ]
 const start_room_preload = preload("res://scenes/rooms/start_room.tscn")
 const end_room_preload = preload("res://scenes/rooms/end_room.tscn")
-const enemy_preload = preload("res://scenes/Enemy.tscn")
+const enemy_preload = preload("res://scenes/enemy.tscn")
 const vertical_coridor_preload = preload("res://scenes/rooms/vertical_coridor.tscn")
 const horizontal_coridor_preload = preload("res://scenes/rooms/horizontal_coridor.tscn")
 const player_preload = preload("res://scenes/player/player.tscn")
@@ -69,10 +69,6 @@ func get_player():
 	return $Player
 
 
-func get_current_hp():
-	return get_player().hp
-
-
 func get_info_layer():
 	return $Info
 
@@ -86,15 +82,15 @@ func get_money_label():
 
 
 func update_hp():
-	get_hp_label().text = "HP: " + str(get_current_hp()) + "/" + str(Global.max_hp)
+	get_hp_label().text = "❤️" + str(Global.current_hp) + "/" + str(Global.max_hp)
 
 
 func update_money(change):
 	Global.current_money += change
-	get_money_label().set_text("Money: " + str(Global.current_money))
+	get_money_label().set_text("💲" + str(Global.current_money))
 
 
-func remove_enemy(money_change, enemy_name):
+func remove_enemy(money_change):
 	update_money(money_change)
 
 
@@ -176,7 +172,6 @@ func _ready():
 		room_coord[0].x + Global.room_size / 2, 
 		room_coord[0].y + Global.room_size / 2
 	))
-	player.set_name("Player")
 	player.set_hp(Global.current_hp)
 	add_child(player)
 	
@@ -189,12 +184,14 @@ func _ready():
 	add_child(info_layer)
 	
 	var hp_label = Label.new()
-	hp_label.set_text("HP: " + str(get_current_hp()) + "/" + str(Global.max_hp))
+	hp_label.set_text("❤️" + str(Global.current_hp) + "/" + str(Global.max_hp))
+	hp_label.add_theme_font_size_override("font_size", 30)
 	get_info_layer().add_child(hp_label)
 	
 	var money_label = Label.new()
-	money_label.set_text("Money: " + str(Global.current_money))
-	money_label.set_position(Vector2(0, 30))
+	money_label.set_text("💲" + str(Global.current_money))
+	money_label.set_position(Vector2(0, 50))
+	money_label.add_theme_font_size_override("font_size", 30)
 	get_info_layer().add_child(money_label)
 	
 	var greeting = greeting_preload.instantiate()

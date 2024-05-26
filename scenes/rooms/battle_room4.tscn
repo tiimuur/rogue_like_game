@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://buu0ivr5vv2sl"]
 
 [ext_resource type="Script" path="res://scripts/rooms/battle_room.gd" id="1_86hbq"]
-[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://assets/morgue_tilesheet_0.png" id="2_4r53v"]
+[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://assets/tileset.png" id="2_4r53v"]
 [ext_resource type="PackedScene" uid="uid://m207xduuov3c" path="res://scenes/enemy.tscn" id="3_my34f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw2a0"]
@@ -883,8 +883,7 @@ position = Vector2(240, 240)
 shape = SubResource("RectangleShape2D_24kf0")
 
 [node name="Enemy" parent="." instance=ExtResource("3_my34f")]
-visible = false
-position = Vector2(57, 100)
+position = Vector2(261, 203)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://by67efivmtftd"]
 
 [ext_resource type="Script" path="res://scripts/rooms/battle_room.gd" id="1_p2eln"]
-[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://assets/morgue_tilesheet_0.png" id="2_gpqj6"]
+[ext_resource type="Texture2D" uid="uid://ddejjt7mbmxf0" path="res://assets/tileset.png" id="2_gpqj6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n41ma"]
 texture = ExtResource("2_gpqj6")

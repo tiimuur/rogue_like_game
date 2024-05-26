@@ -5,11 +5,10 @@ extends CharacterBody2D
 const TIME_FOR_SHOOTING = 1
 
 var alive = true
-var hp = 200
-var speed = 0.7
+var speed = 1.7
 var can_damage = true
-var curent_max_clip = 5
-var bullet_clip = curent_max_clip
+var current_max_clip
+var bullet_clip
 var reloading = false
 
 const bullet_preload = preload("res://scenes/player/bullet.tscn")
@@ -19,8 +18,12 @@ func is_alive():
 	return alive
 
 
+func get_hp():
+	return Global.current_hp
+
+
 func set_hp(value):
-	hp = value
+	Global.current_hp = value
 
 
 func set_reload(value):
@@ -44,19 +47,19 @@ func shooting_player():
 
 
 func get_damaged(damage):
-	hp -= damage
-	if hp <= 0:
+	Global.current_hp -= damage
+	if Global.current_hp <= 0:
 		alive = false
 		$AnimatedSprite2D.play("death")
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
 func reload():
-	if alive and bullet_clip != curent_max_clip and not reloading:
+	if alive and bullet_clip != current_max_clip and not reloading:
 		reloading = true
 		$ReloadNode/ReloadBar.show()
 		$ReloadNode/ReloadBar.set_value(1)
-		bullet_clip = curent_max_clip
+		bullet_clip = current_max_clip
 
 
 func get_player():
@@ -65,6 +68,7 @@ func get_player():
 
 func get_tilemap():
 	return $TileMap
+
 
 func get_bullets():
 	return $Bullets
@@ -104,3 +108,9 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("Reload"):
 		reload()
+
+
+func _ready():
+	name = "Player"
+	current_max_clip = Global.ammo_size
+	bullet_clip = current_max_clip

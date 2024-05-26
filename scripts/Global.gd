@@ -5,6 +5,8 @@ var current_hp = 200
 var max_hp = 200
 var current_money = 0
 var bullet_dmg = 20
+var ammo_size = 5
+var time_between_reload_anim = 0.1
 
 const tile_size = 16
 const room_size = 30 * tile_size

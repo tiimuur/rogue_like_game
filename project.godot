@@ -13,6 +13,7 @@ config_version=5
 config/name="Rogue_Like_Game"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=60
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 
 [autoload]
@@ -22,7 +23,7 @@ Global="*res://scripts/Global.gd"
 [display]
 
 window/size/mode=3
-mouse_cursor/custom_image="res://assets/point and click cursor.png"
+mouse_cursor/custom_image="res://assets/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(10, 10)
 mouse_cursor/tooltip_position_offset=Vector2(0, 0)
 

@@ -2,7 +2,7 @@ extends Control
 
 
 func update_info():
-	$InfoLabel.set_text("Money: " + str(Global.current_money) + "\nHP: " \
+	$InfoLabel.set_text("💲" + str(Global.current_money) + "\n❤️" \
 	 + str(Global.current_hp) + "/" + str(Global.max_hp))
 
 
@@ -26,6 +26,7 @@ func _on_play_button_pressed():
 
 
 func _on_quit_to_main_menu_button_pressed():
+	Global.current_level = 0
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
@@ -47,4 +48,18 @@ func _on_increase_damage_button_pressed():
 	if Global.current_money >= 100:
 		Global.current_money -= 100
 		Global.bullet_dmg += 20
+		update_info()
+
+
+func _on_increase_magazine_button_pressed():
+	if Global.current_money >= 100:
+		Global.current_money -= 100
+		Global.ammo_size += 1
+		update_info()
+
+
+func _on_decrease_reload_time_button_pressed():
+	if Global.current_money >= 100:
+		Global.current_money -= 100
+		Global.time_between_reload_anim -= 0.01
 		update_info()

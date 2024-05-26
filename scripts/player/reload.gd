@@ -1,7 +1,5 @@
 extends Control
 
-const TIME_BETWEEN_ANIM_CHANGED = 0.1
-
 
 func _ready():
 	$ReloadBar.set_max(30)
@@ -14,7 +12,7 @@ func _on_reload_bar_value_changed(value):
 		$"..".set_reload(false)
 		return
 		
-	$ReloadTimer.start(TIME_BETWEEN_ANIM_CHANGED)
+	$ReloadTimer.start(Global.time_between_reload_anim)
 
 
 func _on_reload_timer_timeout():

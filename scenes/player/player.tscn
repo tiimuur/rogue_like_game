@@ -1,82 +1,83 @@
-[gd_scene load_steps=24 format=3 uid="uid://bfygqdrdi7c6s"]
+[gd_scene load_steps=25 format=3 uid="uid://bfygqdrdi7c6s"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_k6kqx"]
-[ext_resource type="Texture2D" uid="uid://drwmt667k5hde" path="res://assets/pixel_character_pale_red.png" id="2_2020f"]
+[ext_resource type="Texture2D" uid="uid://drwmt667k5hde" path="res://assets/player.png" id="2_6r3c5"]
 [ext_resource type="Script" path="res://scripts/player/reload.gd" id="3_vrelw"]
+[ext_resource type="Script" path="res://scripts/player/stamina.gd" id="4_gf4wu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dicrh"]
 radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ptkhx"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(0, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_twdfb"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(48, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnon6"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(96, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycsg6"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(144, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrwyh"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(192, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpx7g"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(0, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47uuh"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(48, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1drbn"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(96, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5iol"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(144, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhd4k"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(192, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcu8l"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(240, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhv7v"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(288, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8q7y"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(336, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4lrq"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(0, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whka6"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(48, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ldlk"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(96, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8ogp"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(144, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1ur6"]
-atlas = ExtResource("2_2020f")
+atlas = ExtResource("2_6r3c5")
 region = Rect2(192, 240, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qpb8g"]
@@ -195,6 +196,27 @@ offset_right = 12.0
 offset_bottom = -19.0
 show_percentage = false
 
+[node name="Stamina" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_gf4wu")
+
+[node name="StaminaTimer" type="Timer" parent="Stamina"]
+
+[node name="StaminaBar" type="ProgressBar" parent="Stamina"]
+self_modulate = Color(0.231373, 0.552941, 0.776471, 1)
+layout_mode = 0
+offset_left = -12.0
+offset_top = -18.0
+offset_right = 12.0
+offset_bottom = -14.0
+step = 1.0
+show_percentage = false
+
 [connection signal="timeout" from="TimerForShoting" to="." method="_on_timer_for_shoting_timeout"]
 [connection signal="timeout" from="ReloadNode/ReloadTimer" to="ReloadNode" method="_on_reload_timer_timeout"]
 [connection signal="value_changed" from="ReloadNode/ReloadBar" to="ReloadNode" method="_on_reload_bar_value_changed"]
+[connection signal="timeout" from="Stamina/StaminaTimer" to="Stamina" method="_on_stamina_timer_timeout"]
+[connection signal="value_changed" from="Stamina/StaminaBar" to="Stamina" method="_on_stamina_bar_value_changed"]

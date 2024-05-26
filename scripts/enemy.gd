@@ -44,7 +44,7 @@ func get_damaged(damage):
 	
 	if hp <= 0:
 		if alive:
-			get_parent().get_parent().remove_enemy(25, name)
+			get_parent().get_parent().remove_enemy(25 + 10 * Global.current_level)
 		alive = false
 		$AnimatedSprite2D.play("death")
 		$CollisionShape2D.set_deferred("disabled", true)
