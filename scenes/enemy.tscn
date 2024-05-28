@@ -209,7 +209,7 @@ offset_bottom = -19.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="body_entered" from="isDamaged" to="." method="_on_is_damaged_body_entered"]
