@@ -11,7 +11,8 @@ var pause_menu
 const battle_room_preload = [
 	preload("res://scenes/rooms/battle_room1.tscn"), 
 	preload("res://scenes/rooms/battle_room2.tscn"), 
-	preload("res://scenes/rooms/battle_room3.tscn")
+	preload("res://scenes/rooms/battle_room3.tscn"),
+	preload("res://scenes/rooms/battle_room4.tscn")
 ]
 const start_room_preload = preload("res://scenes/rooms/start_room.tscn")
 const end_room_preload = preload("res://scenes/rooms/end_room.tscn")
