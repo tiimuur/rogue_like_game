@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @onready var navigation_agent = $NavigationAgent2D
+const max_cord = 10000
 
 var playerNextTo = false
 var alive = true
@@ -9,6 +10,18 @@ var chase = false
 var speed = 1
 var hp = 100
 var canDamage = true
+
+var points_to_walk = Array()
+var ind = 0
+var last_global_position = global_position
+
+
+func _ready():
+	points_to_walk.append(Vector2(-max_cord, -max_cord))
+	points_to_walk.append(Vector2(max_cord, -max_cord))
+	points_to_walk.append(Vector2(-max_cord, max_cord))
+	points_to_walk.append(Vector2(max_cord, max_cord))
+	navigation_agent.set_target_position(points_to_walk[ind])
 
 
 func _physics_process(delta):
@@ -31,7 +44,17 @@ func _physics_process(delta):
 				move_and_collide(velocity)
 				$AnimatedSprite2D.play("walk")
 		else:
-			$AnimatedSprite2D.play("idle")
+			var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
+			velocity = direction * speed
+			move_and_collide(velocity)
+			
+			# gavnocode ON
+			if last_global_position == global_position:
+				$AnimatedSprite2D.play("idle")
+			else:
+				$AnimatedSprite2D.play("walk")
+				last_global_position = global_position
+			# gavnocode OFF
 
 
 func set_chase():
@@ -77,3 +100,12 @@ func add_max_health(add_hp):
 
 func is_alive():
 	return alive
+
+
+func _on_timer_timeout():
+	if !(chase and get_parent().get_parent().get_player().is_alive()):
+		ind += 1
+		if ind == 4:
+			ind = 0
+			
+		navigation_agent.set_target_position(points_to_walk[ind])
