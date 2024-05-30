@@ -33,7 +33,7 @@ func _on_quit_to_main_menu_button_pressed():
 func _on_heal_full_button_pressed():
 	if Global.current_money >= 50:
 		Global.current_money -= 50
-		Global.current_hp = Global.max_hp
+		Global.current_hp += 50
 		update_info()
 
 
